@@ -1,0 +1,513 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #241b2b;
+    color: #f8e5bd;
+    font-family:
+        "Noto Serif Devanagari",
+        serif;
+}
+
+.app {
+    position: relative;
+
+    width: 100vw;
+    height: 100svh;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    padding:
+        0
+        12px
+        max(12px, env(safe-area-inset-bottom));
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.background {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    background-image:
+        url("images/background.jpg");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position:
+        center center;
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.02) 0%,
+            rgba(0, 0, 0, 0) 55%,
+            rgba(20, 8, 3, 0.48) 100%
+        );
+}
+
+
+/* =====================================================
+   PERSONAL WATERMARK
+===================================================== */
+
+.watermark {
+    position: absolute;
+
+    top:
+        max(
+            14px,
+            env(safe-area-inset-top)
+        );
+
+    left: 16px;
+
+    z-index: 4;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+
+    pointer-events: none;
+    user-select: none;
+
+    opacity: 0.72;
+
+    text-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, 0.45);
+}
+
+.watermark span {
+    color: #f3d28d;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+}
+
+.watermark small {
+    color: #e0b76a;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 0.36rem;
+
+    letter-spacing: 0.25em;
+}
+
+
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+.music-player {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(92vw, 300px);
+
+    margin-bottom: 12px;
+
+    padding:
+        9px
+        11px
+        10px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(255, 215, 130, 0.34);
+
+    background:
+        rgba(38, 18, 9, 0.72);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.32),
+
+        inset 0 1px
+        rgba(255, 255, 255, 0.09);
+}
+
+
+/* =====================================================
+   PLAYER LABEL
+===================================================== */
+
+.player-label {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 2px;
+
+    color: #e6b55a;
+
+    font-size: 0.52rem;
+
+    letter-spacing: 0.10em;
+}
+
+.player-label span {
+    width: 14px;
+    height: 1px;
+
+    background:
+        rgba(230, 181, 90, 0.5);
+}
+
+
+/* =====================================================
+   SONG INFO
+===================================================== */
+
+.song-info {
+    text-align: center;
+
+    padding:
+        0 4px;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-area {
+    display: grid;
+
+    grid-template-columns:
+        27px
+        1fr
+        27px;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 5px;
+
+    color: #d0a967;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 0.50rem;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 2px;
+
+    accent-color: #e5ad45;
+
+    cursor: pointer;
+
+    touch-action: none;
+
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   MAIN CONTROLS
+===================================================== */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 4px;
+}
+
+.control {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    border: none;
+
+    background: transparent;
+
+    color: #f2d28e;
+
+    font-size: 0.72rem;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.12s ease,
+        opacity 0.12s ease;
+}
+
+.play-button {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255, 220, 135, 0.65);
+
+    color: #4b1d0d;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffe49b,
+            #dca43c
+        );
+
+    font-size: 0.82rem;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+
+    -webkit-tap-highlight-color: transparent;
+
+    box-shadow:
+        0 4px 10px
+        rgba(0, 0, 0, 0.32);
+
+    transition:
+        transform 0.12s ease,
+        opacity 0.12s ease;
+}
+
+
+/* =====================================================
+   TOUCH INTERACTION
+===================================================== */
+
+button {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+button:active {
+    transform: scale(0.92);
+
+    opacity: 0.82;
+}
+
+button:focus-visible {
+    outline:
+        2px solid
+        rgba(255, 210, 120, 0.8);
+
+    outline-offset: 2px;
+}
+
+
+/* =====================================================
+   AUDIO / CONTROLS
+===================================================== */
+
+audio {
+    display: none;
+}
+
+button,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .app {
+        padding-left: 8px;
+        padding-right: 8px;
+
+        padding-bottom:
+            max(
+                9px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .background {
+        background-size: cover;
+
+        background-position:
+            center center;
+    }
+
+    .music-player {
+        width: min(88vw, 290px);
+
+        margin-bottom: 8px;
+    }
+
+    .watermark {
+        left: 12px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .music-player {
+        width: 270px;
+
+        padding:
+            8px
+            9px
+            9px;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+
+    .play-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .control {
+        width: 27px;
+        height: 27px;
+    }
+
+    .watermark span {
+        font-size: 0.55rem;
+    }
+}
+
+
+/* =====================================================
+   TABLET / DESKTOP
+===================================================== */
+
+@media (min-width: 601px) {
+
+    .music-player {
+        width: 300px;
+
+        margin-bottom: 18px;
+    }
+}
+
+
+/* =====================================================
+   LARGE SCREEN
+===================================================== */
+
+@media (min-width: 1000px) {
+
+    .music-player {
+        width: 285px;
+
+        margin-bottom: 20px;
+
+        opacity: 0.96;
+    }
+
+    .background {
+        background-size: cover;
+
+        background-position:
+            center center;
+    }
+}

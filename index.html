@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#24130b"
+    >
+
+    <meta
+        name="description"
+        content="गणगंध — जुन्या गाण्यांतला बाप्पाचा रंग."
+    >
+
+    <title>
+        गणगंध — जुन्या गाण्यांतला बाप्पाचा रंग.
+    </title>
+
+
+    <!-- Fonts -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Main CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <main class="app">
+
+
+        <!-- Background artwork -->
+
+        <div
+            class="background"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- Dark overlay -->
+
+        <div
+            class="overlay"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- Personal watermark -->
+
+        <div
+            class="watermark"
+            aria-label="Ganagand creator watermark"
+        >
+
+            <span>
+                ROHAN THORAT
+            </span>
+
+            <small>
+                GANAGAND PROJECT
+            </small>
+
+        </div>
+
+
+        <!-- Music player -->
+
+        <section
+            class="music-player"
+            aria-label="Ganagand music player"
+        >
+
+
+            <!-- Player heading -->
+
+            <div class="player-label">
+
+                <span></span>
+
+                आत्ता ऐकत आहात
+
+                <span></span>
+
+            </div>
+
+
+            <!-- Song information -->
+
+            <div
+                class="song-info"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Progress -->
+
+            <div class="progress-area">
+
+                <span id="currentTime">
+                    0:00
+                </span>
+
+
+                <input
+                    id="progress"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    aria-label="Song progress"
+                >
+
+
+                <span id="duration">
+                    0:00
+                </span>
+
+            </div>
+
+
+            <!-- Main controls -->
+
+            <div class="controls">
+
+
+                <!-- Previous -->
+
+                <button
+                    id="prevBtn"
+                    class="control"
+                    type="button"
+                    title="Previous"
+                    aria-label="Previous song"
+                >
+                    ⏮
+                </button>
+
+
+                <!-- Play / Pause -->
+
+                <button
+                    id="playBtn"
+                    class="play-button"
+                    type="button"
+                    title="Play"
+                    aria-label="Play"
+                >
+                    ▶
+                </button>
+
+
+                <!-- Next -->
+
+                <button
+                    id="nextBtn"
+                    class="control"
+                    type="button"
+                    title="Next"
+                    aria-label="Next song"
+                >
+                    ⏭
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- Audio engine -->
+
+        <audio
+            id="audio"
+            preload="auto"
+        ></audio>
+
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
